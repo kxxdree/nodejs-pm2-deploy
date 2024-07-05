@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 import "dotenv/config";
 
@@ -17,10 +18,10 @@ mongoose.connect(DB_ADDRESS);
 // Только для локальных тестов. Не используйте это в продакшене
 app.use(
   cors({
-    origin: "https://dvornikovas.mesto.nomorepartiesco.ru",
+    origin: "*",
   })
 );
-app.options("*", cors());
+// app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
