@@ -26,10 +26,6 @@ router.use("/users", userRouter);
 router.use("/cards", cardRouter);
 
 router.use((req: Request, res: Response, next: NextFunction) => {
-  res.set(
-    "Access-Control-Allow-Origin",
-    "https://dvornikovas.mesto.nomorepartiesco.ru/"
-  );
   next(new NotFoundError("Маршрут не найден"));
 });
 
