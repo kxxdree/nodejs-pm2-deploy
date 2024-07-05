@@ -15,7 +15,7 @@ const app = express();
 mongoose.connect(DB_ADDRESS);
 
 const corsOptions = {
-  origin: "https://dvornikovas.mesto.nomorepartiesco.ru/",
+  origin: "*",
 };
 
 // Только для локальных тестов. Не используйте это в продакшене
