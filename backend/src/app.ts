@@ -17,11 +17,14 @@ mongoose.connect(DB_ADDRESS);
 
 // Только для локальных тестов. Не используйте это в продакшене
 // app.use(cors({ origin: "*" }));
-app.use(function(req: Request, res: Response, next: NextFunction){
+app.use(function (req, res, next: NextFunction) {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
-})
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
