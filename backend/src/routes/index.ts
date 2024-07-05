@@ -9,6 +9,7 @@ import {
   validateUserBody,
   validateAuthentication,
 } from "../middlewares/validatons";
+import cors from "cors";
 
 const router = Router();
 
@@ -22,7 +23,7 @@ router.post("/signin", validateAuthentication, login);
 
 // все роуты, кроме /signin и /signup, защищены авторизацией;
 router.use(auth);
-router.use("/users", userRouter);
+router.use("/users", cors({origin:'*'}), userRouter);
 router.use("/cards", cardRouter);
 
 router.use((req: Request, res: Response, next: NextFunction) => {

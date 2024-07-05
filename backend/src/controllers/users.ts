@@ -12,8 +12,6 @@ import NotFoundError from '../errors/not-found-error';
 import ConflictError from '../errors/conflict-error';
 
 const login = (req: Request, res: Response, next: NextFunction) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
