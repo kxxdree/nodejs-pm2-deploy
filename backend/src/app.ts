@@ -2,7 +2,7 @@
 /* eslint-disable quotes */
 import "dotenv/config";
 
-import express from "express";
+import express, { NextFunction } from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import { errors } from "celebrate";
@@ -17,6 +17,11 @@ mongoose.connect(DB_ADDRESS);
 
 // Только для локальных тестов. Не используйте это в продакшене
 // app.use(cors({ origin: "*" }));
+app.use(function(req: Request, res: Response, next: NextFunction){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+})
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
